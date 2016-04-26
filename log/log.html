@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html >
+
+	<head>
+		<meta charset="UTF-8">
+		<title>操作记录</title>
+		<link rel="stylesheet" href="css/log.css" />
+		<link rel="stylesheet" href="iconfont/iconfont.css" />
+	</head>
+
+	<body>
+		<div id="header">
+			<a href="#"></a>
+			<div class="header-menu">
+				<i class="icon iconfont">&#x3482;</i>
+				<span>
+					<i class="icon iconfont">&#x343d;</i>
+					<span class="header-username">Username</span>
+				</span>
+			</div>
+		</div>
+		<div id="container">
+			<div class="container-left">
+				<div class="container-left-header">
+					<div class="container-left-header-left left">
+						<span>Notifications</span>
+					</div>
+					<div class="container-left-header-right" ng-app="myApp" ng-controller="tabChange">
+						Show:
+						<span class='active-{{isChange}}' ng-click="change()">Unread</span>
+						<span>|</span>
+						<span class='active-{{!isChange}}' ng-click="change()">All</span>
+					</div>
+				</div>
+				<div class="container-left-main">
+					
+				</div>
+			</div>
+			<div class="container-right">
+				<div class="container-right-header">
+					<span>Links</span>
+				</div>
+				<div class="container-right-main">
+					<div class="link-item">
+						<a href="#">
+							<img src="images/wendang.png">
+							<h3> Capture</h3>
+						</a>
+					</div>
+					<div class="link-item">
+						<a href="#">
+							<img src="images/wendang.png">
+							<h3> Compose</h3>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="../lib/angular.min.js"></script>
+		<script type="text/javascript" src="js/log.js"></script>
+	</body>
+
+</html>
