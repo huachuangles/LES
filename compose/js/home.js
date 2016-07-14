@@ -1,0 +1,45 @@
+var myApp=angular.module('myApp',[]);
+myApp.controller('Compose',function($scope,$http,$rootScope){
+	$http.get('./compose.json').success(function(d){
+		console.log(d.item);
+		$scope.composeItem=d.item;
+	}).error(function(err){
+		console.log(err);
+	})
+	$rootScope.goToCapture=function(){
+		window.location.href='../capture/capture.html';
+	}
+})
+myApp.controller('capture',function($scope,$http){
+	$http.get('./compose.json').success(function(d){
+		console.log(d.item);
+		$scope.captureItem=d.item;
+	}).error(function(err){
+		console.log(err);
+	})
+})
+myApp.controller('getUserName',function($scope){
+	$scope.username=sessionStorage.getItem('name');
+})
+myApp.controller('setLanguage',function($scope,$http){
+	$http.get('../language/lang.json').success(function(d){
+		console.log(d);
+		$scope.allLang=d;
+		if(localStorage.getItem("lang")==null||localStorage.getItem("lang")=="ch"){
+			$scope.lang=$scope.allLang.ch;
+		}else if(localStorage.getItem("lang")=="en"){
+			$scope.lang=$scope.allLang.en;
+		}
+	}).error(function(d){
+		console.log(d);
+	})
+	$scope.setLang=function(i){
+		if(i=="ch"){
+			$scope.lang=$scope.allLang.ch;
+			localStorage.setItem("lang","ch");
+		}else if(i=="en"){
+			$scope.lang=$scope.allLang.en;
+			localStorage.setItem("lang","en");
+		}
+	}
+})

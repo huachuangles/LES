@@ -1,0 +1,45 @@
+<div ng-controller="inscon" class="instructions-main">
+	<div class="instructions-save" ng-bind="savedState">{{lang.saved}}</div>
+	<div class="instructions-left" ng-hide="leftIsShow">
+		<div ng-repeat="insItem in treeData">
+			<div class="instructions-tree-item" ng-thisindex ng-click="getThisTree(insItem,$index)" ng-class="{true:'instructions-tree-item-selected',false:''}[thisTree==insItem]">
+				<div>
+					<span ng-bind="$index+1"></span>
+					<span ng-bind="insItem.processName"></span>
+				</div>
+				<div ng-bind="insItem.preview"></div>
+			</div>
+			<div ng-repeat="testItem in insItem.testList">
+				<div class="instructions-tree-item instructions-tree-item-test" ng-thisindex ng-click="getThisTree(testItem,$index)" ng-class="{true:'instructions-tree-item-selected',false:''}[thisTree==testItem]">
+					<div >
+						<span ng-bind="$parent.$index+1"></span>.<span ng-bind="$index+1"></span>
+						<span ng-bind="testItem.testName"></span>
+					</div>
+					<div ng-bind="testItem.preview" ></div>
+				</div>	
+				<div ng-repeat="stepItem in testItem.stepList">
+					<div class="instructions-tree-item instructions-tree-item-step" ng-thisindex ng-click="getThisTree(stepItem,$index)" ng-class="{true:'instructions-tree-item-selected',false:''}[thisTree==stepItem]">
+						<div >
+							<span ng-bind="$parent.$parent.$index+1"></span>.<span ng-bind="$parent.$index+1"></span>.<span ng-bind="$index+1"></span>
+							<span ng-bind="stepItem.stepName"</span>
+						</div>
+						<div ng-bind="stepItem.preview" ></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="instructions-line" ng-class="{true:'instructions-line-btn-hide',false:''}[leftIsShow]">
+		<div class="instructions-line-btn" ng-click="showLeft()"></div>
+	</div>
+	<div class="instructions-right">
+		<div ng-show="insRightIsShow">
+			<div class="instructions-right-name" ng-bind="thisName">Name</div>
+			<div class="instructions-right-btn" ng-show="insRightBtn" ng-click="insRightInp()">Add Observation</div>
+			<div ng-hide="insRightBtn">
+				<div class="instructions-right-textTit">Observations</div>
+				<textarea class="instructions-right-textarea" ng-bind="insRightInpText" ng-model="insRightInpText"></textarea>
+			</div>
+		</div>
+	</div>
+</div>

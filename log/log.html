@@ -1,21 +1,23 @@
 <!DOCTYPE html>
-<html >
+<html ng-app="myApp">
 
 	<head>
 		<meta charset="UTF-8">
 		<title>操作记录</title>
 		<link rel="stylesheet" href="css/log.css" />
-		<link rel="stylesheet" href="iconfont/iconfont.css" />
+		<link rel="stylesheet" href="../iconfont/iconfont.css" />
+		<script type="text/javascript" src="../lib/angular.min.js"></script>
+		<script type="text/javascript" src="js/log.js"></script>
 	</head>
 
-	<body>
+	<body   ng-controller="getItem">
 		<div id="header">
 			<a href="#"></a>
 			<div class="header-menu">
 				<i class="icon iconfont">&#x3482;</i>
 				<span>
 					<i class="icon iconfont">&#x343d;</i>
-					<span class="header-username">Username</span>
+					<span class="header-username" ng-bind="username">Username</span>
 				</span>
 			</div>
 		</div>
@@ -25,15 +27,23 @@
 					<div class="container-left-header-left left">
 						<span>Notifications</span>
 					</div>
-					<div class="container-left-header-right" ng-app="myApp" ng-controller="tabChange">
+					<div class="container-left-header-right" >
 						Show:
 						<span class='active-{{isChange}}' ng-click="change()">Unread</span>
 						<span>|</span>
 						<span class='active-{{!isChange}}' ng-click="change()">All</span>
 					</div>
 				</div>
-				<div class="container-left-main">
-					
+				<div class="container-left-main" >
+					<div class="container-left-main-item " ng-class="{active: activeitem == item}" ng-hide="bluritem == item" ng-repeat="item in itemList| filter:{'read':readstatus}" ng-mouseleave="leave(item,$index)" ng-click="read(item,$index)" >
+							<span class="container-left-main-item-tit" ng-bind="item.title"></span>
+							<span class="container-left-main-item-text" ng-bind="item.text"></span>
+							<span class="container-left-main-item-status" ng-bind="item.status"></span>
+							<span class="container-left-main-item-from" ng-bind="item.from">From:  </span>
+							<span class="container-left-main-item-textInfo" ng-bind="item.textInfo"></span>
+							<span class="container-left-main-item-more"><a href="#">More...</a></span>
+							<span class="container-left-main-item-date" ng-bind="item.date"></span>
+					</div>
 				</div>
 			</div>
 			<div class="container-right">
@@ -48,7 +58,7 @@
 						</a>
 					</div>
 					<div class="link-item">
-						<a href="#">
+						<a href="../compose/home.html">
 							<img src="images/wendang.png">
 							<h3> Compose</h3>
 						</a>
@@ -56,8 +66,7 @@
 				</div>
 			</div>
 		</div>
-		<script type="text/javascript" src="../lib/angular.min.js"></script>
-		<script type="text/javascript" src="js/log.js"></script>
+		
 	</body>
 
 </html>

@@ -1,0 +1,63 @@
+myApp.controller('equipmentInfo',function($scope,$http){
+	$http.get('./equipment.json').success(function(d){
+		$scope.equipmentInfo=d.item;
+	}).error(function(e){
+		console.log(e);
+	});
+	$scope.orderName='';
+	$scope.orderState=true;
+	$scope.nameOrder='';
+	$scope.typeOrder='';
+	$scope.activeitem='';
+	$scope.activeindex='';
+	$scope.allInfo=[];
+	/*点击打开模态*/
+	$scope.open=function(){
+		angular.element(document.querySelectorAll('.motai-box'))[0].style.display='block';
+	};
+	/*点击关闭模态*/
+	$scope.close=function(){
+		angular.element(document.querySelectorAll('.motai-box'))[0].style.display='none';
+	};
+	/*点击排序*/
+	$scope.orderClick=function(d){
+		$scope.orderName=d;
+		if($scope.orderState==false){
+			$scope.orderState=true;
+		}else{
+			$scope.orderState=false;
+		}
+		if(d == 'name'){
+			$scope.typeOrder='';
+			$scope.nameOrder=!$scope.orderState;
+		}else if(d == 'type'){
+			$scope.nameOrder='';
+			$scope.typeOrder=!$scope.orderState;
+		}
+	};
+	/*双击添加仪器*/
+	$scope.addEquipmentList=function(d){
+		if($scope.eListItems.indexOf(d)==-1){
+			$scope.eListItems.push(d);
+			angular.element(document.querySelectorAll('.motai-box'))[0].style.display='none';
+		}else{
+			alert('你已经加入过改器材')
+		}	
+	};
+	/*删除选中仪器*/
+	$scope.remove=function(){
+		$scope.allInfo=[];
+		if(	$scope.activeitem == $scope.eListItems[$scope.activeindex]){
+			$scope.eListItems.splice($scope.activeindex,1);
+		}	
+	};
+	/*点击获取当前元素添加样式*/
+	$scope.read=function(a,b){
+		$scope.allInfo=[];
+		$scope.activeitem=a;
+		$scope.activeindex=b;
+		for(var i in a){
+			$scope.allInfo.push(i);
+		}
+	}
+})

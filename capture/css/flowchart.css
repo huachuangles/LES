@@ -1,0 +1,20 @@
+.OrgBox{
+	font-size:12px;
+	padding:5px 5px 5px 5px;
+	clear:left;
+	float:left;
+	text-align:center;
+	position:absolute;
+	width:70px;
+	height:40px;
+	border: 2px solid #ddd;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;	
+}
+.OrgBox div{
+	line-height: 24px;
+}
+#flowBox{
+	position: relative;
+}

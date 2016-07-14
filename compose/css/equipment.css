@@ -1,0 +1,148 @@
+.equipment-main{
+	width: 100%;
+	height: 451px;
+	display: flex;
+}
+.equipment-main-left{
+	flex: 1;
+	margin-right:10px ;
+}
+.equipment-main-right{
+	flex: 2;
+}
+.equipment-main-title{
+	height: 36px;
+	line-height: 36px;
+	background: #F5F5F5;
+	font-size: 12px;
+	color: #1681ce;
+	padding-left: 11px;
+	box-sizing: border-box;
+}
+.equipment-main-btn{
+	height: 36px;
+	padding-top:6px ;
+	box-sizing: border-box;
+	border-bottom: 1px solid #cdcdcd;
+}
+.equipment-main-btn button{
+	border: 1px solid  #d9d9d9;
+	border-radius: 3px;
+	padding: 4px 9px ;
+	line-height: 12px;
+	font-size: 12px;
+	background: #F5F5F5;
+	color: #828282;
+	margin-left:8px ;
+	cursor: pointer;
+}
+.equipment-main-nav{
+	 border-bottom:1px solid #CDCDCD ;
+	 height: 30px;
+	 line-height: 30px;
+	 padding-left: 11px;
+}
+.equipment-main-lists{
+	width: 100%;
+	height: 30px;
+	line-height: 30px;
+	padding-left: 11px;
+	border-bottom: 1px solid #CDCDCD;
+}
+.equipment-main-lists:hover{
+	background: #edf5fb;
+}
+.active{
+	background: #edf5fb;
+}
+.equipment-main-all{
+	border-bottom:1px solid #CDCDCD ;
+	height: 40px;
+	line-height: 40px;
+	padding-left: 11px;
+	display: flex;
+}
+.equipment-main-all span:nth-child(1){
+	flex: 1 ;
+}
+.equipment-main-all span:nth-child(2){
+	flex: 8;
+}
+/*模态窗口*/
+.motai-box{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(255,255,255,0.5);
+	display: none;
+}
+.motai-main{
+	width: 600px;
+	height: 400px;
+	background: white;
+	margin: auto;  
+    position: absolute;  
+    top: 0; left: 0; bottom: 0; right: 0; 
+    border-radius: 2px;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+.motai-main-tit{
+	height: 30px;
+	background: #f5f5f5;
+}
+.motai-main-tit span{
+	color: #1681ce;
+	line-height: 30px;
+	padding-left: 12px ;
+}
+.motai-main-tit img{
+	float: right;
+	margin-right:12px ;
+	margin-top: 5px;
+	cursor: pointer;
+}
+.motai-main-nav{
+	height: 30px;
+	border: 1px solid  #cdcdcd;
+	display: flex;
+}
+.motai-main-nav-tit{
+	flex: 1;
+	line-height: 30px;
+	padding-left:12px ;
+	border-left:1px solid #cdcdcd;
+	background-position: 43px 8px;
+	background-repeat: no-repeat;
+}
+.motai-main-nav-tit:nth-child(1){
+	border: none;
+	background-position: 50px 8px;
+}
+.motai-equipment-lists{
+	height: 337px;
+	overflow-x: hidden;
+}
+.motai-equipment-list{
+	width: 600px;
+	border-bottom: 1px solid #cdcdcd;
+	height: 25px;
+	line-height: 25px;
+	display: flex;
+}
+.motai-equipment-list div{
+	flex: 1;
+	padding-left: 11px;
+}
+.motai-equipment-list:hover{
+	background: #edf5fb;
+}
+.order-down{
+	background-color: #eff8fc;
+	background-image: url(../images/order_up.png);
+}
+.order-up{
+	background-color: #eff8fc;
+	background-image: url(../images/order_down.png);
+}

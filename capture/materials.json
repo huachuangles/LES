@@ -1,0 +1,59 @@
+{
+	"item": [
+		{	"name": "ABCD",
+			"role": "input",
+			"amountPlanned":"12.0kg+/-0.01kg"
+		},{	"name": "JIU",
+			"role": "intermediate",
+			"amountPlanned":"50.0kg+/-0.01kg"
+		},{	"name": "HUANG",
+			"role": "input",
+			"amountPlanned":"31.0kg+/-0.01kg"
+		},{	"name": "LDF",
+			"role": "input",
+			"amountPlanned":"7.0kg+/-0.01kg"
+		},{	"name": "231",
+			"role": "input",
+			"amountPlanned":"23.0kg+/-0.01kg"
+		},{	"name": "DAXWU",
+			"role": "input",
+			"amountPlanned":"23.0kg+/-0.02kg"
+		},{	"name": "ABCD",
+			"role": "input",
+			"amountPlanned":"12.0kg+/-0.01kg"
+		},{	"name": "JIU",
+			"role": "intermediate",
+			"amountPlanned":"50.0kg+/-0.01kg"
+		},{	"name": "HUANG",
+			"role": "input",
+			"amountPlanned":"31.0kg+/-0.01kg"
+		},{	"name": "LDF",
+			"role": "input",
+			"amountPlanned":"7.0kg+/-0.01kg"
+		},{	"name": "231",
+			"role": "input",
+			"amountPlanned":"23.0kg+/-0.01kg"
+		},{	"name": "DAXWU",
+			"role": "input",
+			"amountPlanned":"23.0kg+/-0.02kg"
+		},{	"name": "ABCD",
+			"role": "input",
+			"amountPlanned":"12.0kg+/-0.01kg"
+		},{	"name": "JIU",
+			"role": "intermediate",
+			"amountPlanned":"50.0kg+/-0.01kg"
+		},{	"name": "HUANG",
+			"role": "input",
+			"amountPlanned":"31.0kg+/-0.01kg"
+		},{	"name": "LDF",
+			"role": "input",
+			"amountPlanned":"7.0kg+/-0.01kg"
+		},{	"name": "231",
+			"role": "input",
+			"amountPlanned":"23.0kg+/-0.01kg"
+		},{	"name": "DAXWU",
+			"role": "input",
+			"amountPlanned":"23.0kg+/-0.02kg"
+		}
+	]
+}

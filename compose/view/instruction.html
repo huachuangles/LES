@@ -1,0 +1,34 @@
+<!--<div>Instruction{{treeItem}}</div>-->
+<div class="instruction-main-box">
+	<div class="instruction-main">
+		<div class="instruction-main-top">
+				<div>{{$root.detailName}}Name</div>
+				<div>{{$root.detailDescription}}Description</div>
+		</div>
+		<div class="instruction-main-bottom">
+			<div ng-repeat="insItem in treeItem">
+				<div class="instruction-item-name instruction-item-process">
+					<span ng-bind="$index+1"></span>
+					<span ng-bind="insItem.processName"></span>
+				</div>
+				<div ng-bind="insItem.preview" class="instruction-item-process"></div>
+				<div ng-repeat="testItem in insItem.testList">
+					<div class="instruction-item-name instruction-item-test">
+						<img src="images/tr_asynchronous_bg.png" ng-show="testItem.asynchronous&&testItem.asynchronousEnd!=true"/>
+						<img src="images/tr_asynchronous_end_bg.png" ng-show="testItem.asynchronous&&testItem.asynchronousEnd==true"/>
+						<span ng-bind="$parent.$index+1"></span>.<span ng-bind="$index+1"></span>
+						<span ng-bind="testItem.testName"></span>
+					</div>
+					<div ng-bind="testItem.preview" class="instruction-item-test"></div>
+					<div ng-repeat="stepItem in testItem.stepList">
+						<div class="instruction-item-name instruction-item-step">
+							<span ng-bind="$parent.$parent.$index+1"></span>.<span ng-bind="$parent.$index+1"></span>.<span ng-bind="$index+1"></span>
+							<span ng-bind="stepItem.stepName"</span>
+						</div>
+						<div ng-bind="stepItem.preview" class="instruction-item-step"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

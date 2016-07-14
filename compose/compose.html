@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Compose</title>
+	<link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/common.css">
+	<link rel="stylesheet" type="text/css" href="../iconfont/iconfont.css">
+	<link rel="stylesheet" type="text/css" href="css/compose.css"/>
+	<link rel="stylesheet" type="text/css" href="css/detail.css"/>
+	<link rel="stylesheet" type="text/css" href="css/materials.css">
+	<link rel="stylesheet" type="text/css" href="css/equipment.css">
+	<link rel="stylesheet" type="text/css" href="css/process.css">
+	<link rel="stylesheet" type="text/css" href="css/instruction.css"/>
+	<link rel="stylesheet" href="../lib/mermaid.forest.css"/>
+    <script src="../lib/mermaid.js"></script>
+    <script>
+        var mermaid_config = {
+            startOnLoad:true,
+            htmlLabels:true
+        }
+        mermaid.sequenceConfig = {
+            diagramMarginX:50,
+            diagramMarginY:10,
+            boxTextMargin:5,
+            noteMargin:10,
+            messageMargin:35,
+            mirrorActors:true,
+            width:150,
+            // Height of actor boxes
+            height:30
+        };
+        mermaid.ganttConfig = {
+            titleTopMargin:25,
+            barHeight:20,
+            barGap:4,
+            topPadding:50,
+            leftPadding:100,
+            gridLineStartPadding:35,
+            fontSize:11,
+            numberSectionStyles:4,
+            axisFormatter: [
+                // Within a day
+                ["%I:%M", function (d) {
+                    return d.getHours();
+                }],
+                // Monday a week
+                ["w. %U", function (d) {
+                    return d.getDay() == 1;
+                }],
+                // Day within a week (not monday)
+                ["%a %d", function (d) {
+                    return d.getDay() && d.getDate() != 1;
+                }],
+                // within a month
+                ["%b %d", function (d) {
+                    return d.getDate() != 1;
+                }],
+                // Month
+                ["%m-%y", function (d) {
+                    return d.getMonth();
+                }]
+            ]
+        };
+
+        mermaid.startOnLoad=true;
+    </script>
+
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+</head>
+<body ng-controller="setLanguage">
+	<div>
+		<section class="title-bar" ng-controller="getUserName">
+			<div class="toolbar-left">	
+			</div>
+			<div class="toolbar-center">
+				{{lang.compose}}	
+			</div>
+			<div class="toolbar-right">	
+				<div class="header-menu">
+					<i class="icon iconfont">
+						&#x3482;
+						<div class="langSel-box">
+							<div class="langSel" ng-click="setLang('en')">{{lang.English}}</div>
+							<div class="langSel" ng-click="setLang('ch')">{{lang.Chinese}}</div>
+						</div>
+					</i>
+					<span>
+						<i class="icon iconfont">&#x343d;</i>
+						<span class="header-username" ng-bind="username">Username</span>
+					</span>
+				</div>
+			</div>
+		</section>
+		<nav class="toolbar-nav">
+			<ul>
+				<li class="act">
+					<a href="home.html" >
+						<i class="iconfont">&#xe6b4;</i>
+						<span>{{lang.home}}</span>
+					</a>
+				</li>
+				<li class="act">
+					<a href="browse.html" >
+						<i class="iconfont">&#xe650;</i>
+						<span>{{lang.browse}}</span>
+					</a>
+				</li>
+				<li class="act">
+					<a href="#" class="bar-active">
+						<i class="iconfont">&#xe646;</i>
+						<span>{{lang.compose}}</span>
+					</a>
+				</li>
+				<li>
+					<a href="#"  class="bar-noactive">
+						<i class="iconfont">&#xe607;</i>
+						<span>{{lang.capture}}</span>
+					</a>
+				</li>
+				<li class="act">
+					<a href="#" >
+						<i class="iconfont">&#xe61e;</i>
+						<span>{{lang.manage}}</span>
+					</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
+	<div class="compose-main" ng-controller="leftShow">
+			<div class="compose-main-left-show" ng-hide="!mainLeft">
+				<span>Recipe Filters</span>
+			</div>
+			<div class="compose-main-left-box" ng-hide="mainLeft">
+				<div class="compose-main-left">
+					<div class="compose-main-tit">{{lang.recipeFilters}}</div>
+				</div>
+				<div class="compose-main-itemList">
+					<a class="compose-main-item" href="#/Details">{{lang.detail}}</a>
+					<a class="compose-main-item" href="#/Materials">{{lang.material}}</a>
+					<a class="compose-main-item" href="#/Equipment">{{lang.equipment}}</a>
+					<a class="compose-main-item" href="#/Process">{{lang.process}}</a>
+					<a class="compose-main-item" href="#/Flowchart">{{lang.flowchart}}</a>
+					<a class="compose-main-item" href="#/Instruction">{{lang.instruction}}</a>
+				</div>
+			</div>
+			<div class="compose-main-line">
+				<div class="compose-main-line-btn" ng-click="leftShow()">
+					<div class="triangle-{{mainLeft}}"></div>
+				</div>
+			</div>
+		<div class="compose-main-right" >
+			<div class="compose-main-right-box" ng-controller='stateBtn'>
+				<div class="compose-main-details-header">
+					<input type="button" class="compose-main-details-header-btn" value="{{lang.save}}" ng-disabled="detailsHeader"/>
+					<input type="button" class="compose-main-details-header-btn" value="{{lang.generateReport}}" ng-disabled="detailsHeader"/>
+					<div class="compose-main-details-header-selBox-{{!detailsHeader}}" >{{inputStateSel}}
+						<select class="compose-main-details-header-sel" ng-model="inputStateSel" value="Current State:Draft" ng-disabled="detailsHeader">
+							<option>{{lang.currentState}}:{{lang.draft}}</option>
+							<option>{{lang.currentState}}:aaa</option>
+							<option>{{lang.currentState}}:bbb</option>
+						</select>
+					</div>
+				</div>
+				<div class="compose-main-right-body" ng-view="">
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="../lib/angular.min.js"></script>
+	<script src="../lib/angular-animate.min.js"></script>
+	<script src="../lib/angular-route.min.js"></script>
+	<script src="http://cdn.bootcss.com/angular-ui-bootstrap/0.11.2/ui-bootstrap-tpls.js"></script>
+	<script type="text/javascript" src="js/compose.js"></script>
+	<script type="text/javascript" src="js/detail.js"></script>
+	<script type="text/javascript" src="js/materials.js" ></script>
+	<script type="text/javascript" src="js/equipment.js" ></script>
+	<script type="text/javascript" src="js/process.js" ></script>
+</body>
+</html>

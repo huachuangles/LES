@@ -1,0 +1,46 @@
+.capture-main{
+	display: flex;
+	flex-direction: column;
+	-webkit-flex-direction: column;
+	-ms-flex-direction: column;
+	flex: 1;
+}
+.capture-nav{
+	height: 42px;
+	line-height: 42px;
+	display: flex;
+}
+.capture-nav-btn-white{
+	flex: 1;
+	border-bottom:1px solid #dddddd ;
+}
+.capture-nav-btn{
+	display: flex;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	border-bottom:1px solid #dddddd;
+	cursor: pointer;
+	color: #327ab7;
+}
+.capture-nav-btn a{
+	display: block;
+	flex: 1;
+	padding: 0 16px;
+}
+.capture-nav-btn-active a{
+	color: #5a6062!important;
+}
+.capture-nav-btn-active {
+	border: 1px solid #DDDDDD;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-bottom: none!important;
+}
+.capture-viewBox{
+	height: 450px;
+	display: flex;
+}
+.ng-show{
+	transition: all 1s linear;
+}

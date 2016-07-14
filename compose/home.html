@@ -1,23 +1,124 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="myApp">
 <head>
 	<meta charset="UTF-8">
 	<title>Home</title>
+	<link rel="stylesheet" type="text/css" href="css/common.css" >
 	<link rel="stylesheet" type="text/css" href="css/home.css">
+	<link rel="stylesheet" type="text/css" href="../iconfont/iconfont.css">
 </head>
-<body>
+<body ng-controller="setLanguage">
 	<div>
-		<section class="title-bar">
+		<section class="title-bar" ng-controller="getUserName">
 			<div class="toolbar-left">	
 			</div>
 			<div class="toolbar-center">
-				Home	
+				{{lang.home}}	
 			</div>
 			<div class="toolbar-right">	
+				<div class="header-menu">
+					<i class="icon iconfont">
+						&#x3482;
+						<div class="langSel-box">
+							<div class="langSel" ng-click="setLang('en')">{{lang.English}}</div>
+							<div class="langSel" ng-click="setLang('ch')">{{lang.Chinese}}</div>
+						</div>
+					</i>
+					<span>
+						<i class="icon iconfont">&#x343d;</i>
+						<span class="header-username" ng-bind="username">Username</span>
+					</span>
+				</div>
 			</div>
-			<nav></nav>
 		</section>
-
+		<nav class="toolbar-nav">
+			<ul>
+				<li class="act">
+					<a href="#" class="bar-active">
+						<i class="iconfont">&#xe6b4;</i>
+						<span>{{lang.home}}</span>
+					</a>
+				</li>
+				<li class="act">
+					<a href="browse.html" >
+						<i class="iconfont">&#xe650;</i>
+						<span>{{lang.browse}}</span>
+					</a>
+				</li >
+				<li class="act">
+					<a href="compose.html" >
+						<i class="iconfont">&#xe646;</i>
+						<span>{{lang.compose}}</span>
+					</a>
+				</li>
+				<li >
+					<a href="#"  class="bar-noactive">
+						<i class="iconfont">&#xe607;</i>
+						<span>{{lang.capture}}</span>
+					</a>
+				</li>
+				<li class="act">
+					<a href="#" >
+						<i class="iconfont">&#xe61e;</i>
+						<span>{{lang.manage}}</span>
+					</a>
+				</li>
+			</ul>
+		</nav>
 	</div>
+	<div id="show-box" ng-controller="Compose">
+		<div class="show-tit">{{lang.recentComposeSessions}} - {{composeItem.length}} {{lang.of}} {{composeItem.length}}</div>
+		<div class="show-main show-main-titBox" >
+			<div class="show-main-item show-main-tit">
+					<div class="show-main-item-gxp">{{lang.gxp}}</div>
+					<div class="show-main-item-lastUpdated">{{lang.lastUpdated}}</div>
+					<div class="show-main-item-name">{{lang.name}}</div>
+					<div class="show-main-item-author">{{lang.author}}</div>	
+					<div class="show-main-item-state">{{lang.state}}</div>
+					<div class="show-main-item-type">{{lang.type}}</div>
+					<div class="show-main-item-white"></div>
+			</div>
+		</div>
+		<div class="show-main show-main-itemBox" >
+			<div class="show-main-item" ng-repeat="item in composeItem">
+				<div class="show-main-item-gxp" >
+					<img class="gxp-noselect" src="images/selected.png" ng-show="{{item.gxp}}"/>
+					<img class="gxp-selected" src="images/noselect.png" ng-hide="{{item.gxp}}"/>
+				</div>
+				<div class="show-main-item-lastUpdated" ng-bind="item.lastUpdate"></div>
+				<div class="show-main-item-name" ng-click="goToCapture()" ng-bind="item.name"></div>
+				<div class="show-main-item-author" ng-bind="item.author"></div>	
+				<div class="show-main-item-state" ng-bind="item.state"></div>
+				<div class="show-main-item-type" ng-bind="item.type"></div>
+			</div>
+		</div>
+	</div>
+	<div id="show-box" class="show-box-capture" ng-controller="capture">
+		<div class="show-tit">{{lang.recentCaptureSessions}} - {{captureItem.length}} {{lang.of}} {{captureItem.length}}</div>
+		<div class="show-main show-main-titBox">
+			<div class="show-main-item show-main-tit">
+				<div class="show-main-item-gxp">{{lang.gxp}}</div>
+				<div class="show-main-item-lastUpdated">{{lang.lastUpdated}}</div>
+				<div class="show-main-item-name">{{lang.name}}</div>
+				<div class="show-main-item-author">{{lang.author}}</div>	
+				<div class="show-main-item-state">{{lang.state}}</div>
+				<div class="show-main-item-white"></div>
+			</div>
+		</div>
+		<div class="show-main show-main-itemBox">
+			<div class="show-main-item" ng-repeat="item in captureItem">
+				<div class="show-main-item-gxp" >
+					<img class="gxp-noselect" src="images/selected.png" ng-show="{{item.gxp}}"/>
+					<img class="gxp-selected" src="images/noselect.png" ng-show="!{{item.gxp}}"/>
+				</div>
+				<div class="show-main-item-lastUpdated" ng-bind="item.lastUpdate"></div>
+				<div class="show-main-item-name"  ng-click="goToCapture()" ng-bind="item.name"></div>
+				<div class="show-main-item-author" ng-bind="item.author"></div>	
+				<div class="show-main-item-state" ng-bind="item.state"></div>
+			</div>
+		</div>
+	</div>
+	<script src="../lib/angular.min.js"></script>
+	<script src="js/home.js"></script>
 </body>
 </html>

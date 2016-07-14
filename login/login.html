@@ -5,28 +5,28 @@
 		<meta charset="UTF-8">
 		<title>登录界面</title>
 		<link rel="stylesheet" href="css/loginstyle.css" />
-		<script type="text/javascript" src="js/login.js" ></script>
 	</head>
 
-	<body>
-		<div id="box">
+	<body ng-app="myApp">
+		<div id="box" ng-controller="loginCtl">
 			<img src="images/logo.jpg">
 			<div id="login">
 				<h3>九江石化实验室执行系统</h3>
 				<div class="login-text">Sign in with your LES account</div>
 				<div class="form-group">
 					<label for="txtUsername">Usernaem:</label>
-					<input type="text"  placeholder="Username">
+					<input type="text"  placeholder="Username" ng-model="username">
 				</div>
 				<div class="form-group">
 					<label for="txtUsername">Password:</label>
-					<input type="password"  placeholder="Password">
+					<input type="password"  placeholder="Password" ng-model="pwd">
 				</div>
 				<div class="login-text"> 
-					<input type="button" value="SIGN IN" onclick="login()">
+					<input type="button" value="SIGN IN" ng-click="login()">
 				</div>
 			</div>
 		</div>
+	<script type="text/javascript" src="../lib/angular.min.js"></script>
+	<script type="text/javascript" src="js/login.js" ></script>
 	</body>
-
 </html>

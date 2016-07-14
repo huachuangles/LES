@@ -1,0 +1,187 @@
+<div class="process-main" ng-controller="processInfo">
+	<div class="process-left">
+		<div class="details-tit">{{lang.processTree}}</div>
+		<div class="processTree-btnBox">
+			<input type="button" value="{{lang.addBefor}}" ng-click="addBefor()" ng-disabled="treeIndex.length==0 || isAsynchronous==true" >
+			<input type="button" value="{{lang.addAfter}}" ng-click="addAfter()" ng-disabled="treeIndex.length==0 || isAsynchronous==true" >
+			<input type="button" value="{{lang.addInner}}" ng-click="addInner()" ng-disabled="treeIndex.length==0||treeIndex.length==3" >	
+			<input type="button" value="{{lang.addAsynchronous}}" ng-click="addAsynchronous()" ng-disabled="treeIndex.length!=2" >
+			<input type="button" value="{{lang.remove}}" ng-click="remove()" ng-disabled="treeIndex.length==0" >
+		</div>
+		<div class="processTree-tit">
+			<div class="processTree-tit-index">#</div>
+			<div class="processTree-tit-name">{{lang.name}}</div>
+			<div class="processTree-tit-predecess">{{lang.predecessor}}</div>
+		</div>
+		<div class="processTree-box">
+			<div  ng-repeat="process in treeItem" >
+				<div class="tree-item-process tree-item-tr"  ng-class="{ true:'tree-item-tr-selcted' ,false:'' }[thisTr==process]" ng-click="selectedTree(process,$index)" ng-trindex>									
+					<div class="tree-item-tr-index">
+						<span ng-bind="$index+1"></span>
+					</div>
+					<div class="tree-item-tr-name">
+						<span ng-bind="process.processName"></span>
+						<img src="images/tr_show.png" ng-showtree/>
+						<img src="images/tr_hidden.png" class="hid-img" ng-hidetree/>
+					</div>
+					<div class="tree-item-tr-predecess"></div>
+				</div>
+				<div  ng-repeat="test in process.testList" >
+					<div class="tree-item-test tree-item-tr " ng-class="{ true:'tree-item-tr-selcted' ,false:'' }[thisTr==test]" ng-click="selectedTree(test,$index)" ng-trindex>
+						<div class="tree-item-tr-index">
+							<span ng-bind="$parent.$index+1"></span>.<span ng-bind="$index+1"></span>
+						</div>									<!--{ true:'tr-asynchronous' ,false:'' }[test.asynchronous]-->		
+						<div class="tree-item-tr-name" ng-class="{'tr-asynchronous' : test.asynchronous , 'tr-asynchronous-end' : test.asynchronousEnd}">
+							<span ng-bind="test.testName"></span>
+							<img src="images/tr_show.png" ng-showtree/>
+							<img src="images/tr_hidden.png" class="hid-img" ng-hidetree/>
+						</div>
+						<div class="tree-item-tr-predecess"></div>
+					</div>
+					<div ng-repeat="step in test.stepList">
+						<div class="tree-item-step tree-item-tr" ng-class="{ true:'tree-item-tr-selcted' ,false:'' }[thisTr==step]" ng-click="selectedTree(step,$index)" ng-trindex>
+							<div class="tree-item-tr-index">
+								<span ng-bind="$parent.$parent.$index+1"></span>.<span ng-bind="$parent.$index+1"></span>.<span ng-bind="$index+1"></span>
+							</div>
+							<div class="tree-item-tr-name">
+								<span ng-bind="step.stepName"></span>
+							</div>
+							<div class="tree-item-tr-predecess"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="process-line"></div>
+	<div class="process-right">
+		<div class="details-tit">{{lang.newProcess}}</div>
+		<div ng-hide="treeIndex.length==0">
+			<div class="process-right-labBtnBox">
+				<div class="process-right-labBtn-active">{{lang.detail}}</div>
+				<div>{{lang.flowchart}}</div>
+			</div>
+			<div class="process-right-main-details">
+				<div class="process-right-main-details-name">
+					<span>{{lang.name}}:</span>
+					<input type="text" ng-model="thisName" />
+				</div>
+				<div class="process-right-main-details-phrasing">
+					<span>{{lang.phrasing}}:</span>
+					<div class="process-right-main-details-phrasing-btn">+{{lang.parameter}}</div>
+					<div class="process-right-main-details-phrasing-btn">+{{lang.material}}</div>
+					<div class="process-right-main-details-phrasing-btn">+{{lang.equipment}}</div>
+				</div>
+				<div class="process-right-main-details-previewBox">
+					<textarea ng-model="thisPreview"></textarea>
+					<div class="process-right-main-details-previewTit">{{lang.preview}}:</div>
+					<div class="process-right-main-details-previewShow" ng-bind="thisPreviewCale"></div>
+				</div>
+				<!--<div class="process-right-main-details-labBox">-->
+				<div class="process-right-labBtnBox">
+					<div ng-click="MateEqu('true')" ng-class="{true:'process-right-labBtn-active',false:''}[MateEquBoo]">{{lang.material}}</div>
+					<div ng-click="MateEqu('false')" ng-class="{true:'',false:'process-right-labBtn-active'}[MateEquBoo]">{{lang.equipment}}</div>
+				</div>
+				<div class="process-right-lab-matenrials" ng-show="MateEquBoo">
+					<div class="process-right-lab-equipment-btnBox">
+						<div class="process-right-lab-equipment-btn" ng-click="showEquipment(1)">{{lang.add}}</div>
+						<div class="process-right-lab-equipment-btn">{{lang.remove}}</div>
+					</div>
+					<div class="process-right-lab-tr"> 
+						<div class="process-right-lab-td">{{lang.name}}</div>
+						<div class="process-right-lab-td">{{lang.role}}</div>
+						<div class="process-right-lab-td">{{lang.amount}}</div>
+					</div>
+					<div class="process-right-lab-tr" ng-repeat="list in MeterialsListitems"> 
+						<div class="process-right-lab-td" ng-bind="list.name">Name</div>
+						<div class="process-right-lab-td process-meterials-role" ng-bind="list.role" ng-dblclick="MeterialsroleChange(item.role,$index)">Role</div>
+						<!--<div class="Material-role" ng-dblclick="roleChange(item.role,$index)" ng-bind="list.role"></div>-->
+						<div class="role-box process-meterials-role-box">
+							<select ng-model='list.role' ng-blur="MeterialsroleBlur(list.role,$index)">
+								<option>{{lang.input}}</option>
+								<option>{{lang.intermediate}}</option>
+								<option>{{lang.output}}</option>
+							</select>
+						</div>
+						<div class="process-right-lab-td" ng-bind="list.amount">Amount</div>
+					</div>
+				</div>
+				<div class="process-right-lab-equipment" ng-hide="MateEquBoo">
+					<div class="process-right-lab-equipment-btnBox">
+						<div class="process-right-lab-equipment-btn" ng-click="showEquipment(0)">{{lang.add}}</div>
+						<div class="process-right-lab-equipment-btn">{{lang.remove}}</div>
+					</div>
+					<div class="process-right-lab-tr"> 
+						<div class="process-right-lab-td">{{lang.name}}</div>
+						<div class="process-right-lab-td" >{{lang.role}}</div>
+					</div>
+					<div class="process-right-lab-tr" ng-repeat="EquipmentList in EquipmentListitems"> 
+						<div class="process-right-lab-td" ng-bind="EquipmentList.name">Name</div>
+						<div class="process-right-lab-td Material-role" ng-dblclick="roleChange(EquipmentList.role,$index)" ng-bind="EquipmentList.role"></div>
+						<div class="role-box">
+							<select ng-model='EquipmentList.role' ng-blur="roleBlur(EquipmentList.role,$index)">
+								<option>{{lang.input}}</option>
+								<option>{{lang.intermediate}}</option>
+								<option>{{lang.output}}</option>
+							</select>
+						</div>
+						
+					</div>
+				</div>
+				<!--</div>-->
+				<div class="process-right-labBtnBox">
+					<div class="process-right-labBtn-active">{{lang.parameter}}</div>
+					<div>{{lang.annotations}}</div>
+				</div>
+			</div>
+		</div>
+	</div>	
+	<div class="motai-box">
+		<div class="motai-main">
+			<div class="motai-main-tit">
+				<span>{{lang.equipmentList}}</span>
+				<img src="images/close.png" ng-click="closeEquipment(0)">
+			</div>
+			<div class="motai-main-nav">
+				<div class="motai-main-nav-tit" ng-class="{true : 'order-up' , false : 'order-down'}[nameOrder]" ng-click="orderClick('name')">
+					{{lang.name}}
+				</div>
+				<div class="motai-main-nav-tit" ng-class="{true : 'order-up' , false : 'order-down'}[typeOrder]" ng-click="orderClick('type')">
+					{{lang.type}}
+				</div>
+			</div>
+			<div class="motai-equipment-lists">
+				<div class="motai-equipment-list" ng-repeat="item in eListItems  | orderBy : orderName : orderState track by $index" ng-dblclick="addEquipmentList(item)">
+					<div>{{item.name}}</div>
+					<div>{{item.type}}</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="motai-box">
+		<div class="motai-main">
+			<div class="motai-main-tit">
+				<span>{{lang.materialList}}</span>
+				<img src="images/close.png" ng-click="closeEquipment(1)">
+			</div>
+			<div class="motai-main-nav">
+				<div class="motai-main-nav-tit" ng-class="{true : 'order-up' , false : 'order-down'}[nameOrder]" ng-click="orderClick('name')">
+					{{lang.name}}
+				</div>
+				<div class="motai-main-nav-tit" ng-class="{true : 'order-up' , false : 'order-down'}[typeOrder]" ng-click="orderClick('role')">
+					{{lang.role}}
+				</div>
+				<div class="motai-main-nav-tit" ng-class="{true : 'order-up' , false : 'order-down'}[typeOrder]" ng-click="orderClick('amount')">
+					{{lang.amount}}
+				</div>
+			</div>
+			<div class="motai-equipment-lists">
+				<div class="motai-equipment-list" ng-repeat="item in listItems  | orderBy : orderName : orderState track by $index" ng-dblclick="addMeterialsList(item)">
+					<div>{{item.name}}</div>
+					<div>{{item.role}}</div>
+					<div>{{item.amount}}</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

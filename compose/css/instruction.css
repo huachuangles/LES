@@ -1,0 +1,41 @@
+.instruction-main-box{
+	overflow-y: auto;
+}
+.instruction-main{
+	margin:0 370px 0 30px;
+	box-shadow: -5px 0px 10px  #eee,
+				5px 0px 10px  #eee;
+	padding: 0 10px;
+}
+.instruction-main-top{
+	height: 95px;
+	padding-top: 17px;
+	border-bottom: 1px solid #eeeded;
+}
+.instruction-main-top div:nth-child(1){
+	color: #0862a3;
+	font-size: 26px;
+}
+.instruction-main-top div:nth-child(2){
+	color: #3893d3;
+	font-size: 22px;
+}
+.instruction-main-bottom{
+	padding-top: 23px;
+}
+.instruction-main-bottom div{
+	font-size: 14px;
+	line-height: 24px;
+}
+.instruction-item-name{
+	font-weight: 600;
+}
+.instruction-item-process{
+	padding-left: 32px;
+}
+.instruction-item-test{
+	padding-left: 64px;
+}
+.instruction-item-step{
+	padding-left: 92px;
+}

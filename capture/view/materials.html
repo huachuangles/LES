@@ -1,0 +1,70 @@
+<div class="materials-box" ng-controller="matCon">
+	<div class="materials-tit">{{lang.material}}</div>
+	<div class="materials-tbody-tr materials-thead">
+		<div class="materials-tbody-td materials-td-btn"></div>
+		<div class="materials-tbody-td materials-td-name">{{lang.name}}</div>
+		<div class="materials-tbody-td materials-td-role">{{lang.role}}</div>
+		<div class="materials-tbody-td materials-td-lotBatch">{{lang.lotBatch}}</div>
+		<div class="materials-tbody-td materials-td-amount">{{lang.amountPlanned}}</div>
+		<div class="materials-tbody-td materials-td-white" ng-show="matList.length>11"></div>
+	</div>
+	<div class="materials-tbody">
+		<div class="materials-tbody-tr-box"  ng-repeat="item in matList">
+			<div class="materials-tbody-tr " ng-class="{true:'materials-tbody-tr-selected',false:''}[matListState[$index]]">
+				<div class="materials-tbody-td materials-td-btn">										
+					<img src="images/materials_td_btn_show.png" ng-click="showMaterialsInfo($index,item)" ng-hide="matListState[$index]"/>
+					<img src="images/materials_td_btn_hid.png" ng-click="showMaterialsInfo($index,item)" ng-show="matListState[$index]"/>
+				</div>																															
+				<div class="materials-tbody-td materials-td-name" ng-bind="item.name"></div>
+				<div class="materials-tbody-td materials-td-role" ng-bind="item.role"></div>
+				<div class="materials-tbody-td materials-td-lotBatch"></div>
+				<div class="materials-tbody-td materials-td-amount" ng-bind="item.amountPlanned"></div>
+			</div>
+			<div class="materials-tbody-info" ng-show="matListState[$index]">
+				<div class="materials-tbody-info-tr">
+					<div class="materials-tbody-info-tr-tit">{{lang.name}}&nbsp;</div>
+					<div class="materials-tbody-info-tr-long"></div>
+					<div class="materials-tbody-info-tr-tit">{{lang.ID}}&nbsp;</div>
+					<div class="materials-tbody-info-tr-long"></div>
+				</div>
+				<div class="materials-tbody-info-tr">
+					<div class="materials-tbody-info-tr-tit">{{lang.class}}&nbsp;</div>
+					<div class="materials-tbody-info-tr-short"></div>
+					<div class="materials-tbody-info-tr-tit">{{lang.lotBatch}}&nbsp;</div>
+					<div class="materials-tbody-info-tr-short"></div>
+					<div class="materials-tbody-info-tr-tit">{{lang.lastUpdated}}&nbsp;</div>
+					<div class="materials-tbody-info-tr-short"></div>
+				</div>
+				<div class="materials-tbody-info-tr">
+					<div class="materials-tbody-info-tr-tit">{{lang.certificate}}&nbsp;</div>
+					<div class="materials-tbody-info-tr-short"></div>
+					<div class="materials-tbody-info-tr-tit">{{lang.sourceSystem}}&nbsp;</div>
+					<div class="materials-tbody-info-tr-short"></div>
+					<div class="materials-tbody-info-tr-tit">URI&nbsp;</div>
+					<div class="materials-tbody-info-tr-short"></div>
+				</div>
+				<div class="materials-tbody-info-tr">
+					<div class="materials-tbody-info-tr-tit">CAS#&nbsp;</div>
+					<div class="materials-tbody-info-tr-short"></div>
+					<div class="materials-tbody-info-tr-tit">MF&nbsp;</div>
+					<div class="materials-tbody-info-tr-short"></div>
+					<div class="materials-tbody-info-tr-tit">MW&nbsp;</div>
+					<div class="materials-tbody-info-tr-short"></div>
+				</div>
+				<div class="materials-tbody-info-tr">
+					<div class="materials-tbody-info-tr-tit">{{lang.diluent}}&nbsp;</div>
+					<div class="materials-tbody-info-tr-short"></div>
+					<div class="materials-tbody-info-tr-tit">{{lang.density}}&nbsp;</div>
+					<div class="materials-tbody-info-tr-short"></div>
+					<div class="materials-tbody-info-tr-tit">{{lang.purity}}&nbsp;</div>
+					<div class="materials-tbody-info-tr-short"></div>
+				</div>
+				<div class="materials-tbody-info-tr">
+					<div class="materials-tbody-info-tr-tit">{{lang.comments}}&nbsp;</div>
+					<div class="materials-tbody-info-tr-Llong"></div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+</div>

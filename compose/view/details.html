@@ -1,0 +1,164 @@
+<div ng-controller='detailsInfo' ng-click="hidDateSel($event)">
+	<div class="details-tit">{{lang.detail}}</div>
+	<div class="details-body-details">
+		<div class="details-body-details-name">
+			<div class="details-body-details-tit">{{lang.name}}:</div>
+			<input type="text" ng-model="$root.detailName"/>
+		</div>
+		<div class="details-body-details-description">
+			<div class="details-body-details-tit">{{lang.description}}:</div>
+			<textarea ng-model="$root.detailDescription"></textarea>
+		</div>
+		<div class="details-body-details-tr">
+			<div class="details-body-details-td">
+				<div class="details-body-details-tit">{{lang.projectID}}:</div>
+				<input type="text"/>
+			</div>
+			<div class="details-body-details-td details-body-details-center">
+				<div class="details-body-details-tit">{{lang.recipeType}}:</div>
+				<span>General</span>
+			</div>
+			<div class="details-body-details-td">
+				<div class="details-body-details-tit">{{lang.author}}:</div>
+				<span>scitegic admin</span>
+			</div>
+		</div>
+		<div class="details-body-details-tr">
+			<div class="details-body-details-td">
+				<div class="details-body-details-tit">{{lang.experimentID}}:</div>
+				<input type="text"/>
+			</div>
+			<div class="details-body-details-td details-body-details-center">
+				<div class="details-body-details-tit">{{lang.state}}:</div>
+				<span>Draft</span>
+			</div>
+			<div class="details-body-details-td">
+				<div class="details-body-details-tit">{{lang.dateCreated}}:</div>
+				<span>05-May-2016 02:45</span>
+			</div>
+		</div>
+		<div class="details-body-details-tr">
+			<div class="details-body-details-td">
+				<div class="details-body-details-tit">{{lang.gxp}}:</div>
+				<div>
+					<input type="checkbox"/>
+				</div>
+			</div>
+			<div class="details-body-details-td details-body-details-center">
+				<div class="details-body-details-tit">{{lang.effectiveDate}}:</div>
+				<input type="text" readonly="readonly" value="{{effectiveDate | date:'yyyy/MM/dd'}}"/>
+				<section class="dataSel-Btn" ng-click="showEffectiveSel()"></section>
+				<!--日期选择-->  <!-- is-open="opened"-->
+				<section  class="dataSel form-control" ng-show="effectiveSelShow">
+					<!--ng-model 绑定dt模块 ， min-date 最少日期 show-weeks= ture 显示周-->
+					<datepicker ng-model="effectiveDate" min-date="minDate" show-weeks="false" class="wellwell-sm dateStyle" ></datepicker>
+				</section>
+			</div>
+			<div class="details-body-details-td">
+				<div class="details-body-details-tit">{{lang.dateUpdate}}:</div>
+				<span>05-May-2016 02:45</span>
+			</div>
+		</div>
+		<div class="details-body-details-tr">
+			<div class="details-body-details-td">
+				<div class="details-body-details-tit">{{lang.reportTemplate}}:</div>
+				<!--<input type="text"/>-->
+				<div class="details-body-details-td-reportTem" ng-bind="reportTemplate"></div>
+				<div class="details-body-details-td-selBox">
+					<select ng-model="reportTemplate">
+						<option>Recipe Datails</option>
+						<option>1</option>
+						<option>2</option>
+					</select>
+				</div>
+			</div>
+			<div class="details-body-details-td details-body-details-center">
+				<div class="details-body-details-tit">{{lang.expirationDate}}:</div>
+				<input type="text" readonly="readonly" value="{{expirationDate | date:'yyyy/MM/dd'}}"/>
+				<section class="dataSel-Btn" ng-click="showExpirationSel()"></section>
+				<!--日期选择-->
+				<section ng-show="expirationSelShow" class="dataSel form-control" >
+					<!--ng-model 绑定dt模块 ， min-date 最少日期 show-weeks= ture 显示周-->
+					<datepicker ng-model="expirationDate" min-date="minDate" show-weeks="false" class="wellwell-sm dateStyle"></datepicker>
+				</section>
+			</div>
+			<div class="details-body-details-td">
+				<div class="details-body-details-tit">{{lang.derivedForm}}:</div>
+				<span> </span>
+			</div>
+		</div>
+	</div>
+	<div class="details-tit">{{lang.signatureRequirements}}</div>
+	<div class="details-body-signature">
+		<div class="details-body-signature-tr">
+			<div class="details-body-signature-tit">{{lang.dateEntry}}:</div>
+			<div class="details-body-signature-td" ng-bind="dateEntry"></div>
+			<div class="details-body-signature-tit">{{lang.dateModification}}:</div>
+			<div class="details-body-signature-td" ng-bind="dateModdification"></div>
+			<div class="details-body-signature-selBox">
+				<div class="details-body-signature-tit"></div>
+				<select ng-model="dateEntry">
+					<option>-- {{lang.noSignatureRequired}} --</option>
+					<option>{{lang.dataOutofLimits}}</option>
+					<option>{{lang.recipeDataEntry}}</option>
+					<option>{{lang.recipeDataModification}}</option>
+					<option>{{lang.recipeDataVerification}}</option>
+				</select>
+				<div class="details-body-signature-tit"></div>
+				<select ng-model="dateModdification">
+					<option>-- {{lang.noSignatureRequired}} --</option>
+					<option>{{lang.dataOutofLimits}}</option>
+					<option>{{lang.recipeDataEntry}}</option>
+					<option>{{lang.recipeDataModification}}</option>
+					<option>{{lang.recipeDataVerification}}</option>
+				</select>
+			</div>
+		</div>
+		<div class="details-body-signature-tr">
+			<div class="details-body-signature-tit">{{lang.dateVerification}}:</div>
+			<div class="details-body-signature-td" ng-bind="dateVerification"></div>
+			<div class="details-body-signature-tit">{{lang.outofLimits}}:</div>
+			<div class="details-body-signature-td" ng-bind="outOfLimits"></div>
+			<div class="details-body-signature-selBox">
+				<div class="details-body-signature-tit"></div>
+				<select ng-model="dateVerification" >
+					<option>-- {{lang.noSignatureRequired}} --</option>
+					<option>{{lang.dataOutofLimits}}</option>
+					<option>{{lang.recipeDataEntry}}</option>
+					<option>{{lang.recipeDataModification}}</option>
+					<option>{{lang.recipeDataVerification}}</option>
+				</select>
+				<div class="details-body-signature-tit"></div>
+				<select ng-model="outOfLimits">
+					<option>-- {{lang.noSignatureRequired}} --</option>
+					<option>{{lang.dataOutofLimits}}</option>
+					<option>{{lang.recipeDataEntry}}</option>
+					<option>{{lang.recipeDataModification}}</option>
+					<option>{{lang.recipeDataVerification}}</option>
+				</select>
+			</div>
+		</div>	
+	</div>
+	<div class="details-tit">{{lang.extendedProperties}}</div>
+	<div class="details-body-extended">
+		<div class="details-body-extended-btnBox">
+			<div class="details-body-extended-btn" ng-click="addTableItem()">{{lang.add}}</div>
+			<div class="details-body-extended-btn" ng-click="removeTableItem()">{{lang.remove}}</div>
+		</div>
+		<div class="details-body-extended-table">
+			<div class="details-body-extended-table-theader">
+				<div class="details-body-extended-table-tr">
+					<div class="details-body-extended-table-td">{{lang.name}}</div>
+					<div class="details-body-extended-table-td">{{lang.value}}</div>
+				</div>
+			</div>
+			<div class="details-body-extended-table-tbody">
+				<input type="text" class="td-change-inp" autofocus="autofocus" ng-blur="tdInpOver()" ng-show="tdInpStar"/>
+				<!--<div class="details-body-extended-table-tr">
+					<div class="details-body-extended-table-td">Name</div>
+					<div class="details-body-extended-table-td">Value</div>
+				</div>-->
+			</div>
+		</div>
+	</div>
+</div>

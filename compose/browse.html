@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Browse</title>
+		<link rel="stylesheet" type="text/css" href="css/common.css">
+		<link rel="stylesheet" type="text/css" href="../iconfont/iconfont.css">
+		<link rel="stylesheet" type="text/css" href="css/browse.css" />
+	</head>
+
+	<body ng-controller="setLanguage">
+		<div>
+			<section class="title-bar" ng-controller="getUserName">
+				<div class="toolbar-left">
+				</div>
+				<div class="toolbar-center">
+					{{lang.browse}}
+				</div>
+				<div class="toolbar-right">
+					<div class="header-menu">
+						<i class="icon iconfont">
+							&#x3482;
+							<div class="langSel-box">
+								<div class="langSel" ng-click="setLang('en')">{{lang.English}}</div>
+								<div class="langSel" ng-click="setLang('ch')">{{lang.Chinese}}</div>
+							</div>
+						</i>
+						<span>
+						<i class="icon iconfont">&#x343d;</i>
+						<span class="header-username" ng-bind="username">Username</span>
+						</span>
+					</div>
+				</div>
+			</section>
+			<nav class="toolbar-nav">
+				<ul>
+					<li class="act">
+						<a href="home.html">
+							<i class="iconfont">&#xe6b4;</i>
+							<span>{{lang.home}}</span>
+						</a>
+					</li>
+					<li class="act">
+						<a href="#" class="bar-active">
+							<i class="iconfont">&#xe650;</i>
+							<span>{{lang.browse}}</span>
+						</a>
+					</li>
+					<li class="act">
+						<a href="compose.html">
+							<i class="iconfont">&#xe646;</i>
+							<span>{{lang.compose}}</span>
+						</a>
+					</li>
+					<li>
+						<a href="#" class="bar-noactive">
+							<i class="iconfont">&#xe607;</i>
+							<span>{{lang.capture}}</span>
+						</a>
+					</li>
+					<li class="act">
+						<a href="#">
+							<i class="iconfont">&#xe61e;</i>
+							<span>{{lang.manage}}</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+		<div class="browse-main" ng-controller="brewseInfo">
+			<div class="browse-main-left-show" ng-hide="!mainLeft">
+				<span>Recipe Filters</span>
+				<img src="images/recipe_filters_tit_hide.png" ng-click="leftShow()" />
+			</div>
+			<div class="browse-main-left-box" ng-hide="mainLeft">
+				<div class="browse-main-left">
+					<div class="browse-main-tit">
+						<span>{{lang.recipeFilters}}</span>
+						<!--<span>Recipe Filters</span>-->
+						<img src="images/recipe_filters_tit.png" ng-click="leftShow()"/>
+					</div>
+					<div class="browse-main-left-filter">
+						<div class="browse-main-left-filter-item">{{lang.name}}:</div>
+						<div class="browse-main-left-filter-item">
+							<input class="browse-main-left-filter-item-input" ng-model="nameInput" />
+							<img class="input-clear" src="images/input_clear.png" ng-click="clear('name')" />
+						</div>
+						<div class="browse-main-left-filter-item">{{lang.authorFullName}}:</div>
+						<div class="browse-main-left-filter-item">
+							<input class="browse-main-left-filter-item-input" ng-model="fullNameInput" />
+							<img class="input-clear" src="images/input_clear.png" ng-click="clear('fullname')" />
+							<div class="browse-main-left-filter-item-me">{{lang.me}}</div>
+						</div>
+						<div class="browse-main-left-filter-item">{{lang.authorUsername}}:</div>
+						<div class="browse-main-left-filter-item">
+							<input class="browse-main-left-filter-item-input" ng-model="userNameInput" />
+							<img class="input-clear" src="images/input_clear.png" ng-click="clear('username')" />
+							<div class="browse-main-left-filter-item-me">{{lang.me}}</div>
+						</div>
+						<div class="browse-main-left-filter-item">{{lang.type}}:</div>
+						<div class="browse-main-left-filter-item">
+							<div class="browse-main-left-filter-item-input browse-main-left-filter-item-sel" />
+							<span ng-bind="typeSel"></span>
+							<select ng-model="typeSel">
+								<option value="*ALL">*{{lang.ALL}}</option>
+								<option value="Draft">Draft</option>
+								<option value="Submitted">Submitted</option>
+								<option value="Approved">Approved</option>
+								<option value="Withdrawn">Withdrawn</option>
+								<option value="In Progress">In Progress</option>
+								<option value="Completed">Completed</option>
+								<option value="Released">Released</option>
+							</select>
+						</div>
+					</div>
+					<div class="browse-main-left-filter-item">{{lang.state}}:</div>
+					<div class="browse-main-left-filter-item">
+						<div class="browse-main-left-filter-item-input browse-main-left-filter-item-sel">
+							<span ng-bind="stateSel"></span>
+							<select ng-model="stateSel">
+								<option value="*ALL">*{{lang.ALL}}</option>
+								<option value="General">General</option>
+								<option value="Site">Site</option>
+								<option value="Master">Master</option>
+								<option value="Control">Control</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="browse-main-line">
+			<div class="browse-main-line-btn" ng-click="leftShow()">
+				<div class="triangle-{{mainLeft}}"></div>
+			</div>
+		</div>
+		<div class="browse-main-right">
+			<div class="browse-main-tit">{{lang.recipe}}</div>
+			<div class="browse-main-right-btnBox">
+				<div class="browse-main-right-btn">
+					<i class="iconfont">&#xe68e;</i> {{lang.creat}}
+				</div>
+				<div class="browse-main-right-btn">
+					<i class="iconfont">&#xe646;</i> {{lang.compile}}
+				</div>
+				<div class="browse-main-right-btn btn-disable">
+					<i class="iconfont">&#xe648;</i> {{lang.clone}}
+				</div>
+				<div class="browse-main-right-btn">
+					<i class="iconfont">&#xe66a;</i> {{lang.remove}}
+				</div>
+				<div class="browse-main-right-btn">
+					<i class="iconfont">&#xf0036;</i> {{lang.import}}
+				</div>
+			</div>
+			<div class="browse-main-right-table">
+				<div class="browse-main-right-tr browse-main-right-thead">
+					<div class="browse-main-right-icon"></div>
+					<div class="browse-main-right-name " ng-class="{true : 'order-up' , false : 'order-down'}[nameOrder]" ng-click="orderClick('name')">{{lang.name}}</div>
+					<div class="browse-main-right-author " ng-class="{true : 'order-up' , false : 'order-down'}[authorOrder]" ng-click="orderClick('author')">{{lang.author}}</div>
+					<div class="browse-main-right-type " ng-class="{true : 'order-up' , false : 'order-down'}[typeOrder]" ng-click="orderClick('type')">{{lang.type}}</div>
+					<div class="browse-main-right-state " ng-class="{true : 'order-up' , false : 'order-down'}[stateOrder]" ng-click="orderClick('state')">{{lang.state}}</div>
+					<div class="browse-main-right-updated ">{{lang.dateUpdate}}</div>
+					<div class="browse-main-right-creat ">{{lang.dateCreated}}</div>
+				</div>
+				<div class="browse-main-right-tbody">
+					<div class="browse-main-right-tr" ng-class="{active : activeitem == item}"  ng-repeat="item in browserInfo | filter : { type : typeFile}
+																							                                   | filter : { state : stateFile}
+																							                                   | filter : { name : nameInput}
+																							                                   | orderBy : orderName : orderState">
+						<div class="browse-main-right-icon" ng-click="open(item,$index)">
+							<img src="images/tr_hidden.png" class="tr-hidden" />
+							<img src="images/tr_show.png" class="tr-show" />
+						</div>
+						<div class="browse-main-right-name">
+							<span ng-bind="item.name"></span>
+							<div class="browse-main-right-info">
+								<div class="browse-main-right-info-spanBox">
+									<div><b>{{lang.description}}:</b><span ng-bind="item.description"></span></div>
+									<div><b>{{lang.gxp}}:</b><span ng-bind="item.gxp"></span></div>
+									<div><b>{{lang.projectID}}:</b><span ng-bind="item.projectId"></span></div>
+									<div><b>{{lang.experimentID}}:</b><span></span></div>
+									<div><b>{{lang.effectiveDate}}:</b><span ng-bind="item.effectiveDate"></span></div>
+									<div><b>{{lang.expirationDate}}:</b><span ng-bind="item.expirationDate"></span></div>
+								</div>
+								
+							</div>
+						</div>
+						<div class="browse-main-right-author" ng-bind="item.author"></div>
+						<div class="browse-main-right-type" ng-bind="item.type"></div>
+						<div class="browse-main-right-state" ng-bind="item.state"></div>
+						<div class="browse-main-right-updated" ng-bind="item.Updated"></div>
+						<div class="browse-main-right-creat" ng-bind="item.Created"></div>
+					</div>
+				</div>
+
+			</div>
+			<div class="browse-main-right-tfoot">
+				<div class="browse-main-right-tfoot-showUp" ng-click="scrollTo(1)">
+					<i class="iconfont">&#xe639;</i>
+				</div>
+				<div class="browse-main-right-tfoot-showBox">
+					<div class="browse-main-right-tfoot-show"></div>
+				</div>
+				<div class="browse-main-right-tfoot-showDown"  ng-click="scrollTo(0)">
+					<i class="iconfont">&#xe631;</i>
+				</div>
+				<span>{{lang.totalRecipes}}:   {{(browserInfo| filter : { type : typeFile}
+													 | filter : { state : stateFile}
+													 | filter : { name : nameInput}
+													 | orderBy : orderName : orderState).length}}</span>
+			</div>
+		</div>
+		</div>
+		<script src="../lib/angular.min.js"></script>
+		<script src="../lib/angular-animate.min.js"></script>
+		<script src="js/browse.js"></script>
+	</body>
+
+</html>

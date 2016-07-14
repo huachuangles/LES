@@ -1,0 +1,40 @@
+<div class="materials-main" ng-controller='materialsInfo'>
+	<div class="materials-main-title">
+		{{lang.recipeMaterials}}
+	</div>
+	<div class="materials-main-btn">
+		<button ng-click='addMaterialsList()'>{{lang.add}}</button>
+		<button ng-click='removeMaterialsList()'>{{lang.remove}}</button>
+	</div>
+	<div class="materials-main-content">
+		<div class="materials-main-content-title">
+			<span>{{lang.name}}</span>
+			<span>{{lang.role}}</span>
+			<span>{{lang.amount}}</span>
+		</div>
+		<div class="materials-main-content-lists">
+			<div class="materials-main-content-list " ng-class='{active: activeitem == item}' ng-repeat='item in listItems' ng-click='read(item,$index)'>
+				<div class="Material-name " ng-bind='item.name' ng-dblclick="nChange(item.name,$index)">
+				</div>
+				<div class="name-box">
+					<input type="text" ng-model='item.name' ng-blur="nBlur(item.name,$index)" />
+				</div>
+				<div class="Material-role" ng-bind='item.role' ng-dblclick="rChange(item.role,$index)">
+				</div>
+				<div class="role-box ">
+					<select ng-model='item.role' ng-blur="rBlur(item.role,$index)">
+						<option>{{lang.input}}</option>
+						<option>{{lang.intermediate}}</option>
+						<option>{{lang.output}}</option>
+					</select>
+				</div>
+				<div class="Material-amount" ng-bind='item.amount' ng-dblclick="aChange(item.amount,$index)">
+				</div>
+				<div class="amount-box">
+					<input type="text" ng-model='item.amount' ng-blur="aBlur(item.amount,$index)" />
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>

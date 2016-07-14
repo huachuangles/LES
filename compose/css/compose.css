@@ -1,0 +1,174 @@
+.compose-main{
+	/*height: 489px;
+	width: 1356px;
+	margin: 5px auto 0;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	border: 1px solid #3699d3;
+	display: flex;*/
+	height: 489px;
+	margin: 0 2px;
+	border: 1px solid #3699d3;
+	display: flex;
+}
+.compose-main .compose-main-left-show{
+	width: 38px;
+	background: #f5f5f5 url(../images/recipe_filters_tit_hide.png) no-repeat center 9px;
+	transition: .1s linear all .4s;
+	-webkit-transition: .1s linear all .4s;
+	-moz-transition: .1s linear all .4s;
+	position: relative;
+	overflow: hidden;
+	font-size: 12px;
+	color: #3699d3;
+}
+.compose-main .compose-main-left-show span{
+	position: absolute;
+	left: -20px;
+	top: 70px;
+	transform: rotate(90deg);
+	white-space: nowrap;
+}
+.compose-main-left{
+	width: 131px;
+	height: 36px;
+s}
+.compose-main .compose-main-left-box{
+	width: 131px;
+	overflow: hidden;
+	transition: .5s linear all;
+	-webkit-transition: .5s linear all;
+	-moz-transition: .5s linear all;
+	flex-direction: column;
+}
+.compose-main>.ng-hide{
+	width: 0px!important;
+}
+.compose-main-tit{
+	height: 36px;
+	background-color: #f5f5f5;
+	font-size: 12px;
+	line-height: 36px;
+	padding-left: 10px;
+	color: #3699d3;
+}
+.compose-main-left .compose-main-tit{
+background-image: url(../images/recipe_filters_tit.png);
+background-position:110px center ;
+background-repeat: no-repeat;
+}
+.compose-main  .compose-main-itemList{
+	height: 451px;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	padding: 10px;
+}
+.compose-main  .compose-main-itemList .compose-main-item{
+	display: block;
+	height: 26px;
+	margin-bottom: 5px;
+	background: #3893d3;
+	border-radius: 2px;
+	-moz-border-radius: 2px;
+	text-align: center;
+	line-height: 26px;
+	font-size: 10px;
+	color: white;
+	cursor: pointer;
+	box-sizing: content-box!important;
+	-moz-box-sizing: content-box!important;
+}
+.compose-main-line{
+	width: 8px;
+	background: #cdcdcd;
+}
+.compose-main-right{
+	flex: 1;
+	display: flex;
+}
+.compose-main-right-box{
+	flex: 1;
+}
+.compose-main-line-btn{
+	height: 48px;
+	background: #dfdfdf;
+	margin-top: 220px;
+	cursor: pointer;
+	overflow: hidden;
+}
+.triangle-true,.triangle-false{
+	margin: 20px auto 0;
+}
+.triangle-true{
+	width:0;   
+	height:0;   
+	border-top:5px solid transparent;   
+	border-bottom: 5px solid transparent;   
+	border-left: 5px solid #BBBBBB;
+}
+.triangle-false{
+	width:0;   
+	height:0;   
+	border-top:5px solid transparent;   
+	border-bottom:5px solid transparent;   
+	border-right:5px solid #BBBBBB;
+}
+.compose-main-details-header{
+	height: 36px;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	padding: 6px 0 0 8px;
+	position: relative;
+}
+.compose-main-details-header-btn{
+	border: 1px solid #CFCFCF;
+	padding: 0px 8px;
+	height: 26px;
+	background: #F5F5F5;
+	font-size: 10px;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	float: left;
+	margin-right: 8px;	
+	cursor: pointer;
+}
+.compose-main-details-header-btn:disabled{
+	border: 1px solid #EEEEEE;
+	color: #afb7b6;
+}
+.compose-main-details-header-selBox-true,.compose-main-details-header-selBox-false{
+	float: left;
+	margin-right: 8px;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	height: 26px;
+	line-height: 26px;
+	width: 138px;
+	border: 1px solid #CFCFCF;
+	padding: 0px 8px;
+	background: #F5F5F5 url(../images/select_bg.png) no-repeat 120px center;
+	font-size: 10px;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	position: relative;
+}
+.compose-main-details-header .compose-main-details-header-selBox-false{
+	border: 1px solid #EEEEEE;
+	color: #afb7b6;
+}
+.compose-main-details-header-sel{
+	height: 26px;
+	line-height: 26px;
+	width: 137px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	cursor: pointer;
+	opacity: 0;
+	font-size: 13px;
+}
+.compose-main-right-body{
+	overflow-x: hidden;
+	overflow-y: auto;
+	height: 451px;
+}

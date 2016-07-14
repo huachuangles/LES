@@ -1,0 +1,48 @@
+<div class="equipment-main" ng-controller='equipmentInfo'>
+	<div class="equipment-main-left">
+		<div class="equipment-main-title">
+			{{lang.recipeEquipment}}
+		</div>
+		<div class="equipment-main-btn">
+			<button ng-click="open()">{{lang.add}}</button>
+			<button ng-click="remove()">{{lang.remove}}</button>
+		</div>
+		<div class="equipment-main-nav">
+			{{lang.name}}
+		</div>
+		<div class="equipment-main-lists" ng-class='{active: activeitem == item}' ng-repeat="item in eListItems track by $index" ng-click="read(item,$index)">
+			<div>
+				{{item.name}}
+			</div>
+		</div>
+	</div>
+	<div class="equipment-main-right">
+		<div class="equipment-main-title">
+			{{lang.equipmentInformation}}
+		</div>
+		<div class="equipment-main-all" ng-repeat="item in allInfo">
+			<span>{{item}}:</span><span>{{activeitem[item]}}</span>
+		</div>
+	</div>
+	<div class="motai-box">
+		<div class="motai-main">
+			<div class="motai-main-tit">
+				<span>{{lang.equipmentList}}</span>
+				<img src="images/close.png" ng-click="close()">
+			</div>
+			<div class="motai-main-nav">
+				<div class="motai-main-nav-tit" ng-class="{true : 'order-up' , false : 'order-down'}[nameOrder]" ng-click="orderClick('name')">
+					{{lang.name}}
+				</div>
+				<div class="motai-main-nav-tit" ng-class="{true : 'order-up' , false : 'order-down'}[typeOrder]" ng-click="orderClick('type')">
+					{{lang.type}}
+				</div>
+			</div>
+			<div class="motai-equipment-lists">
+				<div class="motai-equipment-list" ng-repeat="item in equipmentInfo  | orderBy : orderName : orderState track by $index" ng-dblclick="addEquipmentList(item)">
+					<div>{{item.name}}</div>
+					<div>{{item.type}}</div>
+				</div>
+			</div>
+		</div>
+	</div>

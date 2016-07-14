@@ -1,0 +1,263 @@
+<div class="details-main" ng-controller="detCon">
+	<div class="details-main-tit">{{lang.detail}}</div>
+	<div class="details-main-box">
+		<div class="details-main-tr">
+			<div class="details-main-tr-tit">{{lang.name}}&nbsp;&nbsp;</div>
+			<div class="details-main-tr-name">
+				<div class="details-main-td"></div>
+			</div>
+			<div class="details-main-tr-tit">{{lang.verson}}&nbsp;&nbsp;</div>
+			<div class="details-main-tr-shortTd">
+				<div class="details-main-td"></div>	
+			</div>
+		</div>
+		<div class="details-main-tr">
+			<div class="details-main-tr-tit">{{lang.description}}&nbsp;&nbsp;</div>
+			<div class="details-main-tr-description">
+				<div class="details-main-td"></div>	
+			</div>
+		</div>
+		<div class="details-main-tr">
+			<div class="details-main-tr-tit">{{lang.projectID}}&nbsp;&nbsp;</div>
+			<div class="details-main-tr-shortTd">
+				<div class="details-main-td"></div>	
+			</div>
+			<div class="details-main-tr-tit">{{lang.type}}&nbsp;&nbsp;</div>
+			<div class="details-main-tr-shortTd">
+				<div class="details-main-td"></div>	
+			</div>
+			<div class="details-main-tr-tit">{{lang.author}}&nbsp;&nbsp;</div>
+			<div class="details-main-tr-shortTd">
+				<div class="details-main-td"></div>	
+			</div>
+		</div>
+		<div class="details-main-tr">
+			<div class="details-main-tr-tit">{{lang.experimentID}}&nbsp;&nbsp;</div>
+			<div class="details-main-tr-shortTd">
+				<div class="details-main-td"></div>	
+			</div>
+			<div class="details-main-tr-tit">{{lang.lifecycleState}}&nbsp;&nbsp;</div>
+			<div class="details-main-tr-shortTd">
+				<div class="details-main-td"></div>	
+			</div>
+			<div class="details-main-tr-tit">{{lang.created}}&nbsp;&nbsp;</div>
+			<div class="details-main-tr-shortTd">
+				<div class="details-main-td"></div>	
+			</div>
+		</div>
+		<div class="details-main-tr">
+			<div class="details-main-tr-tit">{{lang.gxp}}&nbsp;&nbsp;</div>
+			<div class="details-main-tr-shortTd">
+				<div class="details-main-td"></div>	
+			</div>
+			<div class="details-main-tr-tit">{{lang.effectiveDate}}&nbsp;&nbsp;</div>
+			<div class="details-main-tr-shortTd">
+				<div class="details-main-td"></div>	
+			</div>
+			<div class="details-main-tr-tit">{{lang.lastUpdated}}&nbsp;&nbsp;</div>
+			<div class="details-main-tr-shortTd">
+				<div class="details-main-td"></div>	
+			</div>
+		</div>
+		<div class="details-main-tr">
+			<div class="details-main-tr-tit">{{lang.reportTemplate}}&nbsp;&nbsp;</div>
+			<div class="details-main-tr-shortTd">
+				<div class="details-main-td"></div>	
+			</div>
+			<div class="details-main-tr-tit">{{lang.expirationDate}}&nbsp;&nbsp;</div>
+			<div class="details-main-tr-shortTd">
+				<div class="details-main-td"></div>	
+			</div>
+			<div class="details-main-tr-tit">{{lang.derivedForm}}&nbsp;&nbsp;</div>
+			<div class="details-main-tr-shortTd">
+				<div class="details-main-td"></div>	
+			</div>
+		</div>
+		<div class="details-main-signature-box">
+			<div class="details-main-signature-tit details-main-tit">{{lang.signatureRequirements}}</div>
+			<div class="details-main-signature-tr">
+				<div class="details-main-signature-tr-tit" ng-click="changeSignatureTrShow(0)">
+					<div>{{lang.outofLimits}}</div>
+					<div>{{lang.dataOutofLimits}}</div>
+					<img src="images/det_tr_bg.png" ng-class="{true:'details-main-signature-tr-img-active',false:''}[signatureTrShow[0]]"/>
+				</div>
+				<div class="details-main-signature-tr-box" ng-show="signatureTrShow[0]">
+					<div class="details-main-signature-tr-box-tr">
+						<div class="details-main-signature-tr-box-tr-tit">{{lang.description}}&nbsp;&nbsp;</div>
+						<div class="details-main-signature-tr-box-tr-long"></div>
+					</div>
+					<div class="details-main-signature-tr-box-tr">
+						<div class="details-main-signature-tr-box-tr-tit">{{lang.category}}&nbsp;&nbsp;</div>
+						<div class="details-main-signature-tr-box-tr-short"></div>
+						<div class="details-main-signature-tr-box-tr-tit">{{lang.lastUpdated}}&nbsp;&nbsp;</div>
+						<div class="details-main-signature-tr-box-tr-short"></div>
+					</div>
+					<div class="details-main-signature-tr-box-tr">
+						<div class="details-main-signature-tr-box-tr-tit">{{lang.credentialsRequired}}&nbsp;&nbsp;</div>
+						<div class="details-main-signature-tr-box-tr-short"></div>
+						<div class="details-main-signature-tr-box-tr-tit">{{lang.viewContentRequired}}&nbsp;&nbsp;</div>
+						<div class="details-main-signature-tr-box-tr-short"></div>
+					</div>
+					<div class="details-main-signature-tr-box-tr">
+						<div class="details-main-signature-tr-box-tr-tit">{{lang.reasonRequired}}&nbsp;&nbsp;</div>
+						<div class="details-main-signature-tr-box-tr-short"></div>
+						<div class="details-main-signature-tr-box-tr-tit">{{lang.freeformReasonAllowed}}&nbsp;&nbsp;</div>
+						<div class="details-main-signature-tr-box-tr-short"></div>
+					</div>
+					<div class="details-main-signature-tr-box-tr">
+						<div class="details-main-signature-tr-box-tr-tit">{{lang.allowedSigners}}&nbsp;&nbsp;</div>
+						<div class="details-main-signature-tr-box-tr-long"></div>
+					</div>
+					<div class="details-main-signature-tr-box-tr">
+						<div class="details-main-signature-tr-box-tr-tit">{{lang.allowedSignersGroup}}&nbsp;&nbsp;</div>
+						<div class="details-main-signature-tr-box-tr-long"></div>
+					</div>
+					<div class="details-main-signature-tr-box-tr">
+						<div class="details-main-signature-tr-box-tr-tit">{{lang.excludedSigners}}&nbsp;&nbsp;</div>
+						<div class="details-main-signature-tr-box-tr-long"></div>
+					</div>
+				</div>
+			</div>
+			<div class="details-main-signature-tr">
+				<div class="details-main-signature-tr-tit" ng-click="changeSignatureTrShow(1)">
+					<div>{{lang.dataEntry}}</div>
+					<div>{{lang.recipeDataEntry}}</div>
+					<img src="images/det_tr_bg.png" ng-class="{true:'details-main-signature-tr-img-active',false:''}[signatureTrShow[1]]"/>
+				</div>
+				<div class="details-main-signature-tr-box" ng-show="signatureTrShow[1]">
+					<div class="details-main-signature-tr-box-tr">
+						<div class="details-main-signature-tr-box-tr-tit">{{lang.description}}&nbsp;&nbsp;</div>
+						<div class="details-main-signature-tr-box-tr-long"></div>
+					</div>
+					<div class="details-main-signature-tr-box-tr">
+						<div class="details-main-signature-tr-box-tr-tit">{{lang.category}}&nbsp;&nbsp;</div>
+						<div class="details-main-signature-tr-box-tr-short"></div>
+						<div class="details-main-signature-tr-box-tr-tit">{{lang.lastUpdated}}&nbsp;&nbsp;</div>
+						<div class="details-main-signature-tr-box-tr-short"></div>
+					</div>
+					<div class="details-main-signature-tr-box-tr">
+						<div class="details-main-signature-tr-box-tr-tit">{{lang.credentialsRequired}}&nbsp;&nbsp;</div>
+						<div class="details-main-signature-tr-box-tr-short"></div>
+						<div class="details-main-signature-tr-box-tr-tit">{{lang.viewContentRequired}}&nbsp;&nbsp;</div>
+						<div class="details-main-signature-tr-box-tr-short"></div>
+					</div>
+					<div class="details-main-signature-tr-box-tr">
+						<div class="details-main-signature-tr-box-tr-tit">{{lang.reasonRequired}}&nbsp;&nbsp;</div>
+						<div class="details-main-signature-tr-box-tr-short"></div>
+						<div class="details-main-signature-tr-box-tr-tit">{{lang.freeformReasonAllowed}}&nbsp;&nbsp;</div>
+						<div class="details-main-signature-tr-box-tr-short"></div>
+					</div>
+					<div class="details-main-signature-tr-box-tr">
+						<div class="details-main-signature-tr-box-tr-tit">{{lang.allowedSigners}}&nbsp;&nbsp;</div>
+						<div class="details-main-signature-tr-box-tr-long"></div>
+					</div>
+					<div class="details-main-signature-tr-box-tr">
+						<div class="details-main-signature-tr-box-tr-tit">{{lang.allowedSignersGroup}}&nbsp;&nbsp;</div>
+						<div class="details-main-signature-tr-box-tr-long"></div>
+					</div>
+					<div class="details-main-signature-tr-box-tr">
+						<div class="details-main-signature-tr-box-tr-tit">{{lang.excludedSigners}}&nbsp;&nbsp;</div>
+						<div class="details-main-signature-tr-box-tr-long"></div>
+					</div>
+				</div>
+			</div>
+			<div class="details-main-signature-tr">
+				<div class="details-main-signature-tr-tit" ng-click="changeSignatureTrShow(2)">
+					<div>{{lang.dataModification}}</div>
+					<div>{{lang.recipeDataModification}}</div>
+					<img src="images/det_tr_bg.png" ng-class="{true:'details-main-signature-tr-img-active',false:''}[signatureTrShow[2]]"/>
+				</div>
+				<div class="details-main-signature-tr-box" ng-show="signatureTrShow[2]">
+					<div class="details-main-signature-tr-box-tr">
+						<div class="details-main-signature-tr-box-tr-tit">{{lang.description}}&nbsp;&nbsp;</div>
+						<div class="details-main-signature-tr-box-tr-long"></div>
+					</div>
+					<div class="details-main-signature-tr-box-tr">
+						<div class="details-main-signature-tr-box-tr-tit">{{lang.category}}&nbsp;&nbsp;</div>
+						<div class="details-main-signature-tr-box-tr-short"></div>
+						<div class="details-main-signature-tr-box-tr-tit">{{lang.lastUpdated}}&nbsp;&nbsp;</div>
+						<div class="details-main-signature-tr-box-tr-short"></div>
+					</div>
+					<div class="details-main-signature-tr-box-tr">
+						<div class="details-main-signature-tr-box-tr-tit">{{lang.credentialsRequired}}&nbsp;&nbsp;</div>
+						<div class="details-main-signature-tr-box-tr-short"></div>
+						<div class="details-main-signature-tr-box-tr-tit">{{lang.viewContentRequired}}&nbsp;&nbsp;</div>
+						<div class="details-main-signature-tr-box-tr-short"></div>
+					</div>
+					<div class="details-main-signature-tr-box-tr">
+						<div class="details-main-signature-tr-box-tr-tit">{{lang.reasonRequired}}&nbsp;&nbsp;</div>
+						<div class="details-main-signature-tr-box-tr-short"></div>
+						<div class="details-main-signature-tr-box-tr-tit">{{lang.freeformReasonAllowed}}&nbsp;&nbsp;</div>
+						<div class="details-main-signature-tr-box-tr-short"></div>
+					</div>
+					<div class="details-main-signature-tr-box-tr">
+						<div class="details-main-signature-tr-box-tr-tit">{{lang.allowedSigners}}&nbsp;&nbsp;</div>
+						<div class="details-main-signature-tr-box-tr-long"></div>
+					</div>
+					<div class="details-main-signature-tr-box-tr">
+						<div class="details-main-signature-tr-box-tr-tit">{{lang.allowedSignersGroup}}&nbsp;&nbsp;</div>
+						<div class="details-main-signature-tr-box-tr-long"></div>
+					</div>
+					<div class="details-main-signature-tr-box-tr">
+						<div class="details-main-signature-tr-box-tr-tit">{{lang.excludedSigners}}&nbsp;&nbsp;</div>
+						<div class="details-main-signature-tr-box-tr-long"></div>
+					</div>
+				</div>
+			</div>
+			<div class="details-main-signature-tr">
+				<div class="details-main-signature-tr-tit" ng-click="changeSignatureTrShow(3)">
+					<div>{{lang.dataVerification}}</div>
+					<div>{{lang.recipeDataVerification}}</div>
+					<img src="images/det_tr_bg.png" ng-class="{true:'details-main-signature-tr-img-active',false:''}[signatureTrShow[3]]"/>
+				</div>
+				<div class="details-main-signature-tr-box" ng-show="signatureTrShow[3]">
+					<div class="details-main-signature-tr-box-tr">
+						<div class="details-main-signature-tr-box-tr-tit">{{lang.description}}&nbsp;&nbsp;</div>
+						<div class="details-main-signature-tr-box-tr-long"></div>
+					</div>
+					<div class="details-main-signature-tr-box-tr">
+						<div class="details-main-signature-tr-box-tr-tit">{{lang.category}}&nbsp;&nbsp;</div>
+						<div class="details-main-signature-tr-box-tr-short"></div>
+						<div class="details-main-signature-tr-box-tr-tit">{{lang.lastUpdated}}&nbsp;&nbsp;</div>
+						<div class="details-main-signature-tr-box-tr-short"></div>
+					</div>
+					<div class="details-main-signature-tr-box-tr">
+						<div class="details-main-signature-tr-box-tr-tit">{{lang.credentialsRequired}}&nbsp;&nbsp;</div>
+						<div class="details-main-signature-tr-box-tr-short"></div>
+						<div class="details-main-signature-tr-box-tr-tit">{{lang.viewContentRequired}}&nbsp;&nbsp;</div>
+						<div class="details-main-signature-tr-box-tr-short"></div>
+					</div>
+					<div class="details-main-signature-tr-box-tr">
+						<div class="details-main-signature-tr-box-tr-tit">{{lang.reasonRequired}}&nbsp;&nbsp;</div>
+						<div class="details-main-signature-tr-box-tr-short"></div>
+						<div class="details-main-signature-tr-box-tr-tit">{{lang.freeformReasonAllowed}}&nbsp;&nbsp;</div>
+						<div class="details-main-signature-tr-box-tr-short"></div>
+					</div>
+					<div class="details-main-signature-tr-box-tr">
+						<div class="details-main-signature-tr-box-tr-tit">{{lang.allowedSigners}}&nbsp;&nbsp;</div>
+						<div class="details-main-signature-tr-box-tr-long"></div>
+					</div>
+					<div class="details-main-signature-tr-box-tr">
+						<div class="details-main-signature-tr-box-tr-tit">{{lang.allowedSignersGroup}}&nbsp;&nbsp;</div>
+						<div class="details-main-signature-tr-box-tr-long"></div>
+					</div>
+					<div class="details-main-signature-tr-box-tr">
+						<div class="details-main-signature-tr-box-tr-tit">{{lang.excludedSigners}}&nbsp;&nbsp;</div>
+						<div class="details-main-signature-tr-box-tr-long"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="details-main-signature-box details-main-extend-box">
+			<div class="details-main-extend-tit details-main-tit">{{lang.extendedProperties}}</div>
+			<div class="details-main-extend-tr details-main-extend-thead">
+				<div>{{lang.name}}</div>
+				<div>{{lang.value}}</div>
+			</div>
+			<div class="details-main-extend-tr">
+				<div>Name</div>
+				<div>Value</div>
+			</div>
+		</div>
+	</div>
+</div>

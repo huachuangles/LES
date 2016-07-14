@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Capture</title>
+	<link rel="stylesheet" type="text/css" href="css/common.css">
+	<link rel="stylesheet" type="text/css" href="../iconfont/iconfont.css">
+	<link rel="stylesheet" type="text/css" href="css/capture.css"/>
+	<link rel="stylesheet" type="text/css" href="css/instructions.css"/>
+	<link rel="stylesheet" type="text/css" href="css/detail.css"/>
+	<link rel="stylesheet" type="text/css" href="css/materials.css"/>
+	<link rel="stylesheet" type="text/css" href="css/equipments.css"/>
+	<link rel="stylesheet" type="text/css" href="css/flowchart.css"  />
+</head>
+<body ng-app="myApp" ng-controller="captureMain">
+	<div>
+		<section class="title-bar" ng-controller="getUserName">
+			<div class="toolbar-left">	
+			</div>
+			<div class="toolbar-center">
+				{{lang.capture}}
+			</div>
+			<div class="toolbar-right">	
+				<div class="header-menu">
+					<i class="icon iconfont">
+						<div class="langSel-box">
+							<div class="langSel" ng-click="setLang('en')">{{lang.English}}</div>
+							<div class="langSel" ng-click="setLang('ch')">{{lang.Chinese}}</div>
+						</div>
+						&#x3482;
+					</i>
+					<span>
+						<i class="icon iconfont">&#x343d;</i>
+						<span class="header-username" ng-bind="username">Username</span>
+					</span>
+				</div>
+			</div>
+		</section>
+		<nav class="toolbar-nav">
+			<ul>
+				<li class="act">
+					<a href="../compose/home.html" >
+						<i class="iconfont">&#xe6b4;</i>
+						<span>{{lang.home}}</span>
+					</a>
+				</li>
+				<li class="act">
+					<a href="../compose/browse.html" >
+						<i class="iconfont">&#xe650;</i>
+						<span>{{lang.browse}}</span>
+					</a>
+				</li>
+				<li class="act">
+					<a href="../compose/compose.html">
+						<i class="iconfont">&#xe646;</i>
+						<span>{{lang.compose}}</span>
+					</a>
+				</li>
+				<li>
+					<a href="#"  class="bar-active">
+						<i class="iconfont">&#xe607;</i>
+						<span>{{lang.capture}}</span>
+					</a>
+				</li>
+				<li class="act">
+					<a href="#" >
+						<i class="iconfont">&#xe61e;</i>
+						<span>{{lang.manage}}</span>
+					</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
+	<div class="capture-main" >
+		<div class="capture-nav">
+			<div class="capture-nav-btn" ng-click="changeTab(0)" ng-class="{true: 'capture-nav-btn-active',false:''}[aTabIndex=='view/instructions.html']"><a href="#/Instructions">{{lang.instruction}}</a></div>
+			<div class="capture-nav-btn" ng-click="changeTab(1)" ng-class="{true: 'capture-nav-btn-active',false:''}[aTabIndex=='view/flowchart.html']"><a href="#/Flowchart">{{lang.flowchart}}</a></div>
+			<div class="capture-nav-btn" ng-click="changeTab(2)" ng-class="{true: 'capture-nav-btn-active',false:''}[aTabIndex=='view/details.html']"><a href="#/Details">{{lang.detail}}</a></div>
+			<div class="capture-nav-btn" ng-click="changeTab(3)" ng-class="{true: 'capture-nav-btn-active',false:''}[aTabIndex=='view/materials.html']"><a href="#/Materials">{{lang.material}}</a></div>
+			<div class="capture-nav-btn" ng-click="changeTab(4)" ng-class="{true: 'capture-nav-btn-active',false:''}[aTabIndex=='view/equipment.html']"><a href="#/Equipment">{{lang.equipment}}</a></div>
+			<div class="capture-nav-btn-white"></div>
+		</div>
+		<div class="capture-viewBox" ng-view></div>
+	</div>
+</body>
+<script src="../lib/angular.min.js"></script>
+<script src="../lib/angular-animate.min.js"></script>
+<script src="../lib/angular-route.min.js"></script>
+<script src="../lib/organization.js"></script>
+<script src="js/capture.js"></script>
+<script src="js/instructions.js"></script>
+<script src="js/detail.js"></script>
+<script src="js/materials.js"></script>
+<script src="js/equipments.js"></script>
+<script src="js/flowchart.js"></script>
+</html>
