@@ -33,4 +33,3 @@ app.controller('getItem', function($scope, $http, $log) {
 		}
 	};
 });
-
